@@ -1,6 +1,8 @@
 from typing import List, Optional
+
 from app.domain.models import Memory
 from app.domain.repositories import AgentRepository, MemoryRepository
+
 
 class MemoryService:
     def __init__(self, agent_repo: AgentRepository, mem_repo: MemoryRepository):

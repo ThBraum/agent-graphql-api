@@ -1,11 +1,13 @@
+from typing import List, Optional
+
 import strawberry
-from typing import Optional, List
-from strawberry.fastapi import GraphQLRouter
-from app.services.memory_service import MemoryService
-from app.infra.repositories_pg import PgAgentRepo, PgMemoryRepo
-from app.domain.models import Memory as DomainMemory
-from app.config import settings
 from fastapi import Request
+from strawberry.fastapi import GraphQLRouter
+
+from app.config import settings
+from app.domain.models import Memory as DomainMemory
+from app.infra.repositories_pg import PgAgentRepo, PgMemoryRepo
+from app.services.memory_service import MemoryService
 
 
 @strawberry.type
@@ -91,7 +93,7 @@ def get_router():
     agent_repo = PgAgentRepo()
     mem_repo = PgMemoryRepo()
     svc = MemoryService(agent_repo, mem_repo)
-    
+
     async def context_getter(request: Request):
         api_key = settings.graphql_api_key
         if api_key:

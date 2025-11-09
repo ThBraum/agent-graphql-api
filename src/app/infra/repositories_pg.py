@@ -1,8 +1,10 @@
 import uuid
-from typing import Optional, List
 from datetime import datetime
+from typing import List, Optional
+
 from app.domain.models import Agent, Memory
 from app.domain.repositories import AgentRepository, MemoryRepository
+
 from .db import get_pool
 
 

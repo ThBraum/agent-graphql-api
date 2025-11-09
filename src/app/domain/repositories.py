@@ -1,9 +1,14 @@
-from typing import Protocol, List, Optional
+from typing import List, Optional, Protocol
+
 from .models import Agent, Memory
+
 
 class AgentRepository(Protocol):
     async def get(self, agent_id: str) -> Optional[Agent]: ...
-    async def list_memories(self, agent_id: str, kind: Optional[str], limit: int) -> List[Memory]: ...
+    async def list_memories(
+        self, agent_id: str, kind: Optional[str], limit: int
+    ) -> List[Memory]: ...
+
 
 class MemoryRepository(Protocol):
     async def search(self, agent_id: str, q: str, limit: int) -> List[Memory]: ...
