@@ -1,0 +1,30 @@
+[project]
+name = "agent-graphql-api"
+version = "0.1.0"
+description = "GraphQL API for agent memories (FastAPI + Strawberry) with Clean Architecture"
+authors = [{ name = "Matheus Braum", email = "mtbraum@gmail.com" }]
+readme = "README.md"
+requires-python = ">=3.11,<4.0"
+dependencies = [
+    "fastapi>=0.115.2,<0.116",
+    "strawberry-graphql>=0.243,<0.285",
+    "asyncpg>=0.29,<0.31",
+    "pydantic-settings>=2.6,<3.0",
+    "python-dotenv>=1.0,<2.0",
+]
+
+[tool.poetry]
+packages = [{ include = "app", from = "src" }]
+
+[tool.poetry.group.dev.dependencies]
+uvicorn = { extras = ["standard"], version = "^0.38.0" }
+ruff = "^0.6.9"
+black = "^24.10.0"
+mypy = "^1.11.2"
+pytest = "^8.2"
+pytest-asyncio = "^0.23.8"
+httpx = "^0.28.1"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
